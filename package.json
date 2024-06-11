@@ -1,0 +1,21 @@
+{
+  "name": "vite-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite serve",
+    "build": "vite build",
+    "preview": "npm run build && vite preview",
+    "clean": "vite clean"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "mathjs": "^12.4.2",
+    "postcss": "^8.4.38",
+    "sass": "^1.77.4",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.12"
+  }
+}

@@ -1,6 +1,10 @@
 const wait = 100;
 
-const intro = '# intro';
+const intro = `# intro
+
+price = .25 g / kWh
+
+k = price * 6000 kWh / 365 days `;
 
 const intro_doc = {
   description: 'You can type math.js expressions and see the result.',
@@ -61,7 +65,7 @@ function doMath(input) {
             if (r.doc) doc = r.doc;
             else output_line = math.format(r, 14);
           }
-        } catch(e) {
+        } catch (e) {
           output_line = e.toString();
         }
       }
