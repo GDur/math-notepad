@@ -4,6 +4,29 @@ import hljs from 'highlight.js';
 import * as math from 'mathjs';
 import './hljs/myMathjs';
 
+
+export const log = console.log.bind(document)
+
+// Define the value of 1 Ah in coulombs (e.g., 1 Ah = 3600 C)
+// makes sure that Ah * V = Wh
+math.createUnit("Ah", "3600 C")
+math.createUnit("mAh", "3600 mC")
+
+math.createUnit("ly", "9460730472580800 meters")
+math.createUnit("lightyear", "9460730472580800 meters")
+
+math.createUnit(
+  {
+    'EUR': {
+    },
+    'USD': {
+    }
+  },
+  {
+    override: true
+  }
+)
+
 const wait = 100;
 
 const intro = `# intro
