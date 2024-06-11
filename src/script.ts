@@ -1,3 +1,9 @@
+import { CodeJar } from 'codejar';
+import hljs from 'highlight.js';
+
+import * as math from 'mathjs';
+import './hljs/myMathjs';
+
 const wait = 100;
 
 const intro = `# intro
@@ -20,6 +26,16 @@ const intro_doc = {
   ]
 }
 
+const help = document.querySelector('#help')! as HTMLElement
+const help_name = document.querySelector('#help_name')! as HTMLElement
+const help_description = document.querySelector('#help_description')! as HTMLElement
+const help_syntax_code = document.querySelector('#help_syntax_code')! as HTMLElement
+const help_syntax = document.querySelector('#help_syntax')! as HTMLElement
+const help_examples_code = document.querySelector('#help_examples_code')! as HTMLElement
+const help_examples = document.querySelector('#help_examples')! as HTMLElement
+const help_seealso_text = document.querySelector('#help_seealso_text')! as HTMLElement
+const help_seealso = document.querySelector('#help_seealso')! as HTMLElement
+
 function showDoc(doc) {
   if (!doc) {
     help.style.display = 'none';
@@ -34,10 +50,12 @@ function showDoc(doc) {
   help_description.textContent = doc.description;
 
   help_syntax_code.textContent = doc.syntax?.join("\n");
+  delete help_syntax_code.dataset.highlighted
   hljs.highlightElement(help_syntax_code);
   hideEmpty(help_syntax, doc.syntax);
 
   help_examples_code.textContent = doc.examples?.join("\n");
+  delete help_examples_code.dataset.highlighted
   hljs.highlightElement(help_examples_code);
   hideEmpty(help_examples, doc.examples);
 
@@ -47,8 +65,23 @@ function showDoc(doc) {
   help.style.display = 'block';
 }
 
+
+
+
+
+const inputEditor = document.querySelector('#input')! as HTMLElement
+const outputResults = document.querySelector('#output')! as HTMLElement
+
+inputEditor.addEventListener('drop', (event) => {
+  dropHandler(event)
+})
+
+const editor = CodeJar(inputEditor, hljs.highlightElement);
+const results = CodeJar(outputResults, hljs.highlightElement);
+hljs.configure({ ignoreUnescapedHTML: true });
+
 function doMath(input) {
-  let output = [];
+  let outputs: string[] = [];
   let scope = {};
   let doc;
 
@@ -56,7 +89,9 @@ function doMath(input) {
     let output_line = '';
     if (line) {
       if (line.startsWith('#')) {
-        if (line == '# intro') doc = intro_doc;
+        if (line == '# intro') {
+          doc = intro_doc;
+        }
         output_line = '#';
       } else {
         try {
@@ -70,10 +105,12 @@ function doMath(input) {
         }
       }
     }
-    output.push(output_line);
+    outputs.push(output_line);
   }
 
-  results.updateCode(output.join('\n'));
+  delete outputResults.dataset.highlighted
+  results.updateCode(outputs.join('\n'));
+
   showDoc(doc);
 }
 
@@ -84,21 +121,26 @@ function dropHandler(ev) {
   file.text().then(e => editor.updateCode(e));
 }
 
-async function start(url) {
+async function start(url: string) {
   let code = intro;
-  if (url) code = await (await fetch(url)).text();
+  if (url) {
+    code = await (await fetch(url)).text();
+  }
+
+
+  delete inputEditor.dataset.highlighted
   editor.updateCode(code);
+
   doMath(editor.toString());
+
 }
 
-var timer;
+let timer = 0;
 
 editor.onUpdate(code => {
   clearTimeout(timer);
   timer = setTimeout(doMath, wait, code);
 });
 
-hljs.configure({ ignoreUnescapedHTML: true });
-
 const params = new URLSearchParams(window.location.search);
-start(params.get('input'));
+start(params.get('input')!);

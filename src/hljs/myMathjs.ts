@@ -1,4 +1,8 @@
-function mathjs(hljs) {
+import hljs, { HLJSApi } from 'highlight.js';
+import { MATH_UNITS } from './MATH_UNITS';
+
+export function myMathjs(hljs: HLJSApi) {
+
   function either(args) {
     return '(' + args.join('|') + ')';
   }
@@ -22,12 +26,12 @@ function mathjs(hljs) {
     begin: keywords(['true', 'false', 'end']),
   };
 
-  const UNIT_LIST = Object.keys(math.Unit.UNITS).sort((a, b) => b.length - a.length);
+  const UNIT_LIST = Object.keys(MATH_UNITS).sort((a, b) => b.length - a.length);
 
   const PREFIXED_UNIT_LIST = UNIT_LIST.map(e => {
-      const prefixes = Object.keys(math.Unit.UNITS[e].prefixes).filter(e => e);
-      const prefix_re = prefixes.length ? either(prefixes) + '?' : '';
-      return prefix_re + e;
+    const prefixes = Object.keys(MATH_UNITS[e].prefixes).filter(e => e);
+    const prefix_re = prefixes.length ? either(prefixes) + '?' : '';
+    return prefix_re + e;
   });
 
   const UNITS = {
@@ -89,4 +93,4 @@ function mathjs(hljs) {
   };
 }
 
-hljs.registerLanguage('mathjs', mathjs);
+hljs.registerLanguage('mathjs', myMathjs);

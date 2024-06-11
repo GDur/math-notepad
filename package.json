@@ -17,5 +17,9 @@
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.12"
+  },
+  "dependencies": {
+    "codejar": "^4.2.0",
+    "highlight.js": "^11.9.0"
   }
 }

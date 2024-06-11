@@ -2,11 +2,11 @@
 
 <meta charset="utf-8">
 <title>Notepad</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6/build/styles/felipec.min.css">
 <link rel="stylesheet" href="./src/style.css">
 
-<div id="input" class="editor language-mathjs" ondrop="dropHandler(event)"></div>
+<div id="input" class="editor language-mathjs"></div>
 <div id="output" class="editor language-mathjs"></div>
+
 <div id="help" style="display: none">
   <h1 id="help_name"></h1>
   <p id="help_description"></p>
@@ -24,13 +24,5 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6/build/highlight.min.js"></script>
-<script type="module">
-  import { CodeJar } from 'https://medv.io/codejar/codejar.js';
-  window.editor = CodeJar(input, hljs.highlightElement);
-  window.results = CodeJar(output, hljs.highlightElement);
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjs@11.0/lib/browser/math.min.js"></script>
-<script src="./src/hljs/mathjs.js"></script>
 
-<script src="./src/script.js" defer></script>
+<script type="module" src="./src/script.ts" defer></script>
