@@ -192,9 +192,24 @@ window.visualViewport!.addEventListener("scroll", viewportHandler);
 window.visualViewport!.addEventListener("resize", viewportHandler);
 
 
-let allButtons = uiKeybaord.querySelectorAll('button')
-allButtons.forEach(e => {
+function pasteString(msg: string) {
+  document.execCommand('insertText', false, msg)
+}
 
+let allButtons = uiKeybaord.querySelectorAll('button')!
+allButtons.forEach(button => {
+  button.addEventListener('click', event => {
+    if (button.dataset.action) {
+      let action = button.dataset.action
+      if (action === 'all-clear') {
+        editor.updateCode('');
+      }
+    } else {
+      pasteString(button.innerHTML.trim())
+      doMath(editor.toString())
+    }
+  })
 })
+
 const params = new URLSearchParams(window.location.search);
 start(params.get('input')!);

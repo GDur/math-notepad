@@ -14,106 +14,98 @@
   <div id="input" class="editor language-mathjs"></div>
   <div id="output" class="editor language-mathjs"></div>
 
-  <!-- <div id="help" style="display: none" class="bg-white">
-    <h1 id="help_name"></h1>
-    <p id="help_description"></p>
-    <div id="help_syntax">
-      <h2>Syntax</h2>
-      <pre><code id="help_syntax_code" class="language-mathjs"></code></pre>
-    </div>
-    <div id="help_examples">
-      <h2>Examples</h2>
-      <pre><code id="help_examples_code" class="language-mathjs"></code></pre>
-    </div>
-    <div id="help_seealso">
-      <h2>See also</h2>
-      <p id="help_seealso_text"></p>
-    </div>
-  </div> -->
-
-  <div class="complementary-ui-keyboard bg-blue-600 
-  w-full bg-gradient-to-b from-indigo-400 to-indigo-500 ">
+  <div class="complementary-ui-keyboard 
+  bg-purple-950
+  w-full 
+   ">
     <div class="flex w-full flex-col">
       <div class="w-full flex justify-between">
         <button data-action="all-clear"
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="
+          w-full 
+          border-r border-b border-purple-800
+           h-12  outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           AC
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           EUR
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           (
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           )
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           ^
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           *
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           /
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           +
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           -
+        </button>
+        <button
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          =
         </button>
       </div>
 
       <div class="w-full flex justify-between">
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           1
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           2
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           3
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           4
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           5
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           6
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           7
         </button>
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           8
         </button>
 
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           9
         </button>
 
         <button
-          class="w-full border-r border-b border-indigo-400 h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
+          class="w-full border-r border-b border-purple-800 h-12 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 active:bg-opacity-20 text-white text-xl font-light">
           0
         </button>
       </div>
