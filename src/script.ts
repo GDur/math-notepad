@@ -31,9 +31,9 @@ const wait = 100;
 
 const intro = `# intro
 
-price = .25 g / kWh
+price = .25 EUR / kWh
 
-k = price * 6000 kWh / 365 days `;
+price * 6000 kWh / 365 days `;
 
 const intro_doc = {
   description: 'You can type math.js expressions and see the result.',

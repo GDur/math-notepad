@@ -26,10 +26,14 @@ export function myMathjs(hljs: HLJSApi) {
     begin: keywords(['true', 'false', 'end']),
   };
 
-  const UNIT_LIST = Object.keys(MATH_UNITS).sort((a, b) => b.length - a.length);
+  let ALL_MATH_UNITS = {
+    ...MATH_UNITS,
+  }
+
+  const UNIT_LIST = Object.keys(ALL_MATH_UNITS).sort((a, b) => b.length - a.length);
 
   const PREFIXED_UNIT_LIST = UNIT_LIST.map(e => {
-    const prefixes = Object.keys(MATH_UNITS[e].prefixes).filter(e => e);
+    const prefixes = Object.keys(ALL_MATH_UNITS[e].prefixes).filter(e => e);
     const prefix_re = prefixes.length ? either(prefixes) + '?' : '';
     return prefix_re + e;
   });
