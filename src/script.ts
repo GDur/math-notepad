@@ -103,7 +103,7 @@ const editor = CodeJar(inputEditor, hljs.highlightElement);
 const results = CodeJar(outputResults, hljs.highlightElement);
 hljs.configure({ ignoreUnescapedHTML: true });
 
-function doMath(input) {
+function doMath(input: string) {
   let outputs: string[] = [];
   let scope = {};
   let doc;
@@ -112,9 +112,9 @@ function doMath(input) {
     let output_line = '';
     if (line) {
       if (line.startsWith('#')) {
-        if (line == '# intro') {
-          doc = intro_doc;
-        }
+        // if (line == '# intro') {
+        //   doc = intro_doc;
+        // }
         output_line = '#';
       } else {
         try {
@@ -155,17 +155,18 @@ async function start(url: string) {
   }
 
 
-  delete inputEditor.dataset.highlighted
   editor.updateCode(code);
 
   doMath(editor.toString());
-
 }
 
 let timer = 0;
 
 editor.onUpdate(code => {
+
+  delete inputEditor.dataset.highlighted
   clearTimeout(timer);
+
   timer = setTimeout(doMath, wait, code);
 });
 
