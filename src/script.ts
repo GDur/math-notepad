@@ -4,8 +4,7 @@ import hljs from 'highlight.js';
 import * as math from 'mathjs';
 import './hljs/myMathjs';
 
-
-export const log = console.log.bind(document)
+import { log } from './utils';
 
 // Define the value of 1 Ah in coulombs (e.g., 1 Ah = 3600 C)
 // makes sure that Ah * V = Wh
@@ -33,7 +32,36 @@ const intro = `# intro
 
 price = .25 EUR / kWh
 
-price * 6000 kWh / 365 days
+6000 kWh / 365 days * price
+
+
+# Functions and constants
+
+round(e, 3)
+atan2(3, -3) / pi
+log(10000, 10)
+sqrt(-4)
+derivative("x^2 + x", "x")
+pow([[-1, 2], [3, 1]], 2)
+
+# Expressions
+
+1.2 / (3.3 + 1.7)
+
+a = 5.08 cm + 2 inch
+a to inch
+
+sin(90 deg)
+
+9 / 3 + 2i
+
+det([-1, 2; 3, 1])
+
+f(x, y) = x ^ y
+f(2, 3)
+
+1 kg * 1 m / s^2
+
 
 `;
 
@@ -107,6 +135,7 @@ hljs.configure({ ignoreUnescapedHTML: true });
 
 function doMath(input: string) {
   let outputs: string[] = [];
+
   let scope = {};
   let doc = null
 
@@ -142,7 +171,37 @@ function doMath(input: string) {
   // showDoc(doc);
 }
 
-function dropHandler(ev) {
+function formatCode(input: string) {
+  let formattedLines: string[] = [];
+
+  for (const line of input.split('\n')) {
+    let currentLine = '';
+    if (line) {
+      if (line.startsWith('#')) {
+        // let the comment as is
+        currentLine = line;
+      } else {
+        try {
+          const r = math.parse(line);
+          if (r) {
+            currentLine = math.format(r, { precision: 3 });
+          }
+        } catch (e) {
+          currentLine = line;
+        }
+      }
+    }
+    formattedLines.push(currentLine);
+  }
+
+
+  let formattedCode = formattedLines.join('\n')
+
+  delete inputEditor.dataset.highlighted
+  editor.updateCode(formattedCode);
+}
+
+function dropHandler(ev: any) {
   ev.preventDefault();
 
   const file = ev.dataTransfer.items[0].getAsFile();
@@ -204,9 +263,26 @@ allButtons.forEach(button => {
   button.addEventListener('click', event => {
     if (button.dataset.action) {
       let action = button.dataset.action
+
       if (action === 'all-clear') {
         editor.updateCode('');
+      } else if (action === 'format') {
+        formatCode(editor.toString())!
+      } else if (action === 'back') {
+        /**
+         * we are assuming that the code has been formatted as it is always done automatically
+         */
+
+        // let currentIndex = calc.editor.getPosition()!.column - 1
+
+        // let leftPart = code.substring(0, currentIndex - 1)
+        // let rightPart = code.substring(currentIndex, code.length)
+        // index = currentIndex
+        // edit(calc.editor, leftPart + rightPart, false, true)
+      } else {
+        log('unkndown action', action)
       }
+
     } else if (button.dataset.key) {
       let key = button.dataset.key
       pasteString(key.trim())
