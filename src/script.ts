@@ -134,7 +134,7 @@ function doMath(input) {
   delete outputResults.dataset.highlighted
   results.updateCode(outputs.join('\n'));
 
-  showDoc(doc);
+  // showDoc(doc);
 }
 
 function dropHandler(ev) {
