@@ -120,8 +120,12 @@ function doMath(input) {
         try {
           const r = math.evaluate(line, scope);
           if (r) {
-            if (r.doc) doc = r.doc;
-            else output_line = math.format(r, 14);
+            if (r.doc) {
+              doc = r.doc;
+            }
+            else {
+              output_line = math.format(r, { precision: 3 });
+            }
           }
         } catch (e) {
           output_line = e.toString();
