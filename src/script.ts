@@ -112,10 +112,9 @@ function doMath(input: string) {
     let output_line = '';
     if (line) {
       if (line.startsWith('#')) {
-        // if (line == '# intro') {
-        //   doc = intro_doc;
-        // }
-        output_line = '#';
+
+        // let the comment as is
+        output_line = line;
       } else {
         try {
           const r = math.evaluate(line, scope);
