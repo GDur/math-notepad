@@ -207,6 +207,10 @@ allButtons.forEach(button => {
       if (action === 'all-clear') {
         editor.updateCode('');
       }
+    } else if (button.dataset.key) {
+      let key = button.dataset.key
+      pasteString(key.trim())
+      doMath(editor.toString())
     } else {
       pasteString(button.innerHTML.trim())
       doMath(editor.toString())
