@@ -169,7 +169,7 @@ editor.onUpdate(code => {
   timer = setTimeout(doMath, wait, code);
 });
 
-const bottomBar = document.querySelector(".complementary-ui-keyboard")! as HTMLElement
+const uiKeybaord = document.querySelector(".complementary-ui-keyboard")! as HTMLElement
 const viewport = window.visualViewport!
 
 function viewportHandler() {
@@ -185,11 +185,16 @@ function viewportHandler() {
 
   // You could also do this by setting style.left and style.top if you
   // use width: 100% instead.
-  bottomBar.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1 / viewport.scale
+  uiKeybaord.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1 / viewport.scale
     })`;
 }
 window.visualViewport!.addEventListener("scroll", viewportHandler);
 window.visualViewport!.addEventListener("resize", viewportHandler);
 
+
+let allButtons = uiKeybaord.querySelectorAll('button')
+allButtons.forEach(e => {
+
+})
 const params = new URLSearchParams(window.location.search);
 start(params.get('input')!);
