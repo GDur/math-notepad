@@ -180,7 +180,8 @@ function viewportHandler() {
   const offsetLeft = viewport.offsetLeft;
   const offsetTop =
     viewport.height -
-    layoutViewport.getBoundingClientRect().height +
+    layoutViewport.getBoundingClientRect().height + 50
+    +
     viewport.offsetTop;
 
   // You could also do this by setting style.left and style.top if you
