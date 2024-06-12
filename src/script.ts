@@ -106,7 +106,7 @@ hljs.configure({ ignoreUnescapedHTML: true });
 function doMath(input: string) {
   let outputs: string[] = [];
   let scope = {};
-  let doc;
+  let doc = null
 
   for (const line of input.split('\n')) {
     let output_line = '';
@@ -154,7 +154,6 @@ async function start(url: string) {
     code = await (await fetch(url)).text();
   }
 
-
   editor.updateCode(code);
 
   doMath(editor.toString());
@@ -165,10 +164,33 @@ let timer = 0;
 editor.onUpdate(code => {
 
   delete inputEditor.dataset.highlighted
+
   clearTimeout(timer);
 
   timer = setTimeout(doMath, wait, code);
 });
+
+const bottomBar = document.querySelector(".complementary-ui-keyboard")! as HTMLElement
+const viewport = window.visualViewport!
+
+function viewportHandler() {
+  const layoutViewport = document.querySelector("html")!
+
+  // Since the bar is position: fixed we need to offset it by the visual
+  // viewport's offset from the layout viewport origin.
+  const offsetLeft = viewport.offsetLeft;
+  const offsetTop =
+    viewport.height -
+    layoutViewport.getBoundingClientRect().height +
+    viewport.offsetTop;
+
+  // You could also do this by setting style.left and style.top if you
+  // use width: 100% instead.
+  bottomBar.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1 / viewport.scale
+    })`;
+}
+window.visualViewport!.addEventListener("scroll", viewportHandler);
+window.visualViewport!.addEventListener("resize", viewportHandler);
 
 const params = new URLSearchParams(window.location.search);
 start(params.get('input')!);
