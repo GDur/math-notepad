@@ -1,28 +1,37 @@
 <!doctype html>
+<html lang="en">
 
-<meta charset="utf-8">
-<title>Notepad</title>
-<link rel="stylesheet" href="./src/style.css">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathpad</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
 
-<div id="input" class="editor language-mathjs"></div>
-<div id="output" class="editor language-mathjs"></div>
+<body>
 
-<div id="help" style="display: none">
-  <h1 id="help_name"></h1>
-  <p id="help_description"></p>
-  <div id="help_syntax">
-    <h2>Syntax</h2>
-    <pre><code id="help_syntax_code" class="language-mathjs"></code></pre>
+  <div id="input" class="editor language-mathjs"></div>
+  <div id="output" class="editor language-mathjs"></div>
+
+  <div id="help" style="display: none">
+    <h1 id="help_name"></h1>
+    <p id="help_description"></p>
+    <div id="help_syntax">
+      <h2>Syntax</h2>
+      <pre><code id="help_syntax_code" class="language-mathjs"></code></pre>
+    </div>
+    <div id="help_examples">
+      <h2>Examples</h2>
+      <pre><code id="help_examples_code" class="language-mathjs"></code></pre>
+    </div>
+    <div id="help_seealso">
+      <h2>See also</h2>
+      <p id="help_seealso_text"></p>
+    </div>
   </div>
-  <div id="help_examples">
-    <h2>Examples</h2>
-    <pre><code id="help_examples_code" class="language-mathjs"></code></pre>
-  </div>
-  <div id="help_seealso">
-    <h2>See also</h2>
-    <p id="help_seealso_text"></p>
-  </div>
-</div>
 
 
-<script type="module" src="./src/script.ts" defer></script>
+  <script type="module" src="./src/script.ts" defer></script>
+
+</body>
